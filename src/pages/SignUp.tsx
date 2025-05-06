@@ -2,6 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar.tsx";
 import { useState } from "react";
+
+
+// bolna aasan hai ! / but agr uss chiz k liya tumhe coding karni padegi khud taki logic jaldi samjh aaye aur naye feature add kare 
+
+
+
+
+
 // Variables will be used to record data 
 // Improvements:
 // 01) There should be an alert displaying us to add deatails if any of the details are not filled ✅
@@ -13,6 +21,9 @@ import { useState } from "react";
 // 05)There should be an alert if the user does not add his full name (We can check by seeing if a space exists in between the name)
 // 06) There should be an alert if there is no @ in the email address ✅
 
+// typescript
+
+
 
 function SignUp() {
 
@@ -21,20 +32,42 @@ function SignUp() {
     email: "",
     password: "",
     confirmPassword: ""
-  } )
+  })
+  // Common Error Handler 
 
+  let [error , setError] = useState({ errorStatus : false , errorReason : ""  })
 
+  // fullName: "asdsads",
+  // email: "asdas",
+  // password: "asdsa",
+  // confirmPassword: "adsa"
   
   let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
   function handleSubmit(e) {
     // By default fhota h page refresh when form submit
-
+    // 
     e.preventDefault()
-    console.log(personData.password)
-    let res = personData.password.match(pattern)
-    console.log(res)
 
+    console.log(personData.password)
+    
+    setError({errorReason : "" , errorStatus : false})
+    
+    
+    let regexRes = pattern.test(personData.password)
+
+    if(regexRes == false){
+      setError({errorReason : "weakPasscode" , errorStatus : true})
+      return
+    }
+
+    if(personData.password !== personData.confirmPassword){
+      console.log("password missmatch trigeered")
+      setError({errorReason : "passwordMissmatch" , errorStatus : true})
+      return
+    }
+
+    // console.log(res)
     console.log(personData)
   }
 
@@ -96,7 +129,9 @@ function SignUp() {
                   placeholder="John Doe"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                   onChange={(e) => {
-                    personData.fullName = e.target.value
+                    // when any thing we update in state we have to replace like thinkingf they are unmutable 
+                    // i am creating new object for every state update !!
+                   setPersonData({ ...personData , fullName : e.target.value})
                   }}
 
                   required
@@ -114,7 +149,7 @@ function SignUp() {
                   placeholder="john@example.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                   onChange={(e) => {
-                    personData.email = e.target.value
+                    setPersonData({...personData , email : e.target.value})
                   }}
                   required
                 />
@@ -130,10 +165,12 @@ function SignUp() {
                   type="password"
                   placeholder="Create a password"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                  style={ error.errorReason == "weakPasscode" ? { borderColor : "red" , borderWidth : "2px" } : {} }
                   onChange={(e) => {
-                    personData.password = e.target.value
+                    setPersonData({...personData , password : e.target.value})
                   }}
                   required
+                  
                 />
               </motion.div>
 
@@ -148,11 +185,27 @@ function SignUp() {
                   placeholder="Confirm your password"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                   onChange={(e) => {
-                    personData.confirmPassword = e.target.value
+                    setPersonData({...personData , confirmPassword : e.target.value})
                   }}
                   required
                 />
               </motion.div>
+              {/*For Showing Errors Messages */}
+                {/* nested if statement */}
+                {/* jsx js logic kbases pe we can change design or structure of ui */}
+                  {/*  if else he hai bss if else jo hota it outputs like more than one logic but in jsx and in one curly braces we can add only one logic at one time */}
+                {
+                  error.errorStatus == true && <div>
+                    {
+                      error.errorReason == "weakPasscode" && <p>Password is not matching the requirments</p>
+                    }
+
+                    {
+                      error.errorReason == "passwordMissmatch" && <p>Password is not matching !!</p>
+                    }
+                </div>
+              }
+
 
               <motion.div
                 className="flex justify-between items-center"
