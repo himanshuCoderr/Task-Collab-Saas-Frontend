@@ -6,8 +6,8 @@ import OrganizationRegistration from './pages/AddOrganization.tsx';
 function App() {
   return (
     <div className="App">
-     {/* <HomePage /> */}
-     {/* <Login /> */}
+     <HomePage />
+     <Login />
      <SignUp />
     </div>
   );
