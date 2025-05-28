@@ -21,28 +21,48 @@ import { useState } from "react";
 // typescript
 
 
+export interface Account {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface Organization {
+  name: string;
+  domain: string;
+  email: string;
+  industry: string;
+  size: number | null;
+}
+interface error {
+  errorStatus: boolean;
+  errorReason: string;
+}
+
 
 function SignUp() {
 
-  let [personData, setPersonData] = useState({
+  let [personData, setPersonData] = useState<Account>({
     fullName: "",
     email: "",
     password: "",
     confirmPassword: ""
   })
 
-  const [orgData, setOrgData] = useState({
+  const [orgData, setOrgData] = useState<Organization>({
     name: "",
     domain: "",
     email: "",
     industry: "",
-    size: ""
+    size: null
   });
+
   // Common Error Handler 
-  let [showPassword, setShowPassword] = useState(false)
-  let [showConfPassword, setShowConfPassword] = useState(false)
-  let [error, setError] = useState({ errorStatus: false, errorReason: "" })
-  let [showOrganisationForm, setShowOrganisationForm] = useState(false)
+  let [showPassword, setShowPassword] = useState<Boolean>(false)
+  let [showConfPassword, setShowConfPassword] = useState<Boolean>(false)
+  let [error, setError] = useState<error>({ errorStatus: false, errorReason: "" })
+  let [showOrganisationForm, setShowOrganisationForm] = useState<Boolean>(false)
   // fullName: "asdsads",
   // email: "asdas",
   // password: "asdsa",
@@ -50,7 +70,7 @@ function SignUp() {
 
   let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
-  function handleSubmit(e) {
+  function handleSubmit(e : React.FormEvent<HTMLFormElement>) {
     // By default fhota h page refresh when form submit
     // 
     e.preventDefault()
@@ -75,6 +95,12 @@ function SignUp() {
     setShowOrganisationForm(true)
     // console.log(res)
     console.log(personData)
+  }
+
+  function finalSubmit(e) {
+    e.preventDefault()  
+    setShowOrganisationForm(true)
+    console.log(orgData)
   }
 
 
@@ -249,11 +275,11 @@ function SignUp() {
                     Continue
                   </button>
                 </motion.div>
-              </form> : <form className="space-y-6 max-w-xl mx-auto px-6 py-12" onSubmit={handleSubmit}>
+              </form> : <form className="space-y-6 max-w-xl mx-auto px-6 py-12" onSubmit={finalSubmit}>
                 <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">Create Your Organization</h2>
 
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">Organization Name</label>
+                  <label className="block mb-2 text-sm font-medium text-gray-700" >Organization Name</label>
                   <input
                     type="text"
                     placeholder="e.g. TechSavvy Inc."
@@ -312,6 +338,7 @@ function SignUp() {
                   <button
                     type="submit"
                     className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                   
                   >
                     Create Organization
                   </button>
