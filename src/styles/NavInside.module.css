@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 1em;
+  padding-top: 2em;
+  height: 1.5em;
+  padding-bottom: 2em;
+  background-color: rgb(71,54,153);
 }
 
 .left{
@@ -31,17 +34,20 @@
 .fourDot{
   scale: 120%;
   color: rgb(68,84,111);
+  color: white;
 }
 
 .taskFlowIcon{
   scale: 120%;
   color: rgb(68,84,111);
+  color: white;
 }
 
 .searchIcon{
   scale: 80%;
   float: left;
   color: rgb(68,84,111);
+  color: white;
 }
 
 .searchAndInput{
@@ -51,6 +57,7 @@
   border: 1px solid black;
   border-radius: 5px;
   padding-left: 5px;
+  background-color: rgb(108,94,173);
 }
 
 .inputBox{
@@ -59,10 +66,11 @@
   width: 90%;
   outline: none;
   box-shadow: none;
+  background: none;
 }
 
 .inputBox::placeholder{
-  color: black;
+  color: white;
 }
 
 .right{
@@ -83,14 +91,17 @@
   border: 2px solid rgb(130,112,219);
   border-radius: 5px;
   padding: 2px;
+  color: white;
 }
 
 .notificationIcon{
   scale: 120%;
   color: rgb(68,84,111);
+  color: white;
 }
 
 .helpIcon{
   scale: 120%;
   color: rgb(68,84,111);
+  color: white;
 }

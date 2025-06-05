@@ -1,0 +1,66 @@
+.outer {
+  display: flex;
+  justify-content: space-between;
+  min-height: 3em;
+  background-color: rgb(101, 74, 148);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+h1 {
+  font: var(
+    --ds-font-heading-large,
+    600 24px / 28px -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Noto Sans",
+    "Ubuntu",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif
+  );
+  color: white;
+  margin-left: 1em;
+  font-size: 100%;
+}
+
+.eyeIcon {
+  color: white;
+  margin-left: 1em;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.rightShift {
+  margin-right: 2em;
+}
+
+.icon {
+  color: white;
+}
+
+.button {
+  background-color: rgb(220,223,228);
+  padding-left: 1em;
+  border: 1px solid rgb(220,223,228);
+  border-radius: 5px;
+}
+
+.butIcon{
+  color: black;
+  padding-right: 10px;
+}
+
+.share{
+  color: black;
+  margin-right: 1em;
+}
