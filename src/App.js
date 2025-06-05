@@ -4,6 +4,7 @@ import Login from './pages/Login.tsx';
 import SignUp from './pages/SignUp.tsx';
 import OrganizationRegistration from './pages/AddOrganization.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import TaskFlowBoard from './pages/TaskFlowBoard.tsx';
 
 
 
@@ -20,6 +21,10 @@ let myAppRoutes = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />
+  },
+  {
+    path: "/my-task-flow-board",
+    element: <TaskFlowBoard/>
   }
 
 ])

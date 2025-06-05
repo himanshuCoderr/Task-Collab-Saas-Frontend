@@ -1,0 +1,96 @@
+.outerDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.left{
+  width: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: blue; */
+}
+
+.center{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: purple; */
+}
+
+.right{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  /* background-color: pink; */
+}
+
+.fourDot{
+  scale: 120%;
+  color: rgb(68,84,111);
+}
+
+.taskFlowIcon{
+  scale: 120%;
+  color: rgb(68,84,111);
+}
+
+.searchIcon{
+  scale: 80%;
+  float: left;
+  color: rgb(68,84,111);
+}
+
+.searchAndInput{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.inputBox{
+  margin-left: 15px;
+  float: left;
+  width: 90%;
+  outline: none;
+  box-shadow: none;
+}
+
+.inputBox::placeholder{
+  color: black;
+}
+
+.right{
+  display: flex;
+  justify-content: space-around;
+}
+
+.createButton{
+  background-color: rgb(12,102,228);
+  color: white;
+  width: 4.5em;
+  border-radius: 5px;
+}
+
+.megaphoneIcon{
+  scale: 120%;
+  color: rgb(68,84,111);
+  border: 2px solid rgb(130,112,219);
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.notificationIcon{
+  scale: 120%;
+  color: rgb(68,84,111);
+}
+
+.helpIcon{
+  scale: 120%;
+  color: rgb(68,84,111);
+}
